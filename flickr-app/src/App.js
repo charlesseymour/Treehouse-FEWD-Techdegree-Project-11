@@ -1,25 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import SearchForm from './components/SearchForm.js';
+import Navigation from './components/Navigation.js';
+import PhotoGallery from './components/PhotoGallery.js';
+
 
 class App extends Component {
+  state = {
+    photos: [
+      {
+        url: "https://farm5.staticflickr.com/4334/37032996241_4c16a9b530.jpg",
+        id: "1"
+      },
+      {
+        url: "https://farm5.staticflickr.com/4342/36338751244_316b6ee54b.jpg",
+        id: "2"
+      }, 
+      {
+        url: "https://farm5.staticflickr.com/4343/37175099045_0d3a249629.jpg",
+        id: "3"
+      },
+      {
+        url: "https://farm5.staticflickr.com/4425/36337012384_ba3365621e.jpg",
+        id: "4"
+      }
+    ]
+  }
+  
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <SearchForm />
+        <Navigation />
+        <PhotoGallery photos={this.state.photos}/>
       </div>
     );
   }
