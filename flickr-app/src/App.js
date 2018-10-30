@@ -1,30 +1,26 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import SearchForm from './components/SearchForm.js';
 import Navigation from './components/Navigation.js';
 import PhotoGallery from './components/PhotoGallery.js';
+import apiKey from './config.js';
 
 
 class App extends Component {
   state = {
-    photos: [
-      {
-        url: "https://farm5.staticflickr.com/4334/37032996241_4c16a9b530.jpg",
-        id: "1"
-      },
-      {
-        url: "https://farm5.staticflickr.com/4342/36338751244_316b6ee54b.jpg",
-        id: "2"
-      }, 
-      {
-        url: "https://farm5.staticflickr.com/4343/37175099045_0d3a249629.jpg",
-        id: "3"
-      },
-      {
-        url: "https://farm5.staticflickr.com/4425/36337012384_ba3365621e.jpg",
-        id: "4"
-      }
-    ]
+    photos: []
   }
+  
+  componentDidMount() {
+      axios.get("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + apiKey + "&format=json&nojsoncallback=1&tags=cat")
+        .then(response => {
+          this.setState({ photos: response.data.photos.photo
+          });
+        })
+        .catch(error => {
+          console.log('Error fetching and parsing data', error);
+        })
+  };
   
   render() {
     return (

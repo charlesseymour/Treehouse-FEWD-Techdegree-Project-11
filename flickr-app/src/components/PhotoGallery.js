@@ -8,7 +8,8 @@ const PhotoGallery = (props) => (
     <ul>
       {props.photos.map( photo => (
         <Photo 
-          url={photo.url}
+          url={"https://farm" + photo.farm + ".staticflickr.com/" + photo.server
+          + "/" + photo.id + "_" + photo.secret + ".jpg"}
           key={photo.id}
         />
         )
