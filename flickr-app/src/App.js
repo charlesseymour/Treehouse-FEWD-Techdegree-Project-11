@@ -4,6 +4,7 @@ import SearchForm from './components/SearchForm.js';
 import Navigation from './components/Navigation.js';
 import PhotoGallery from './components/PhotoGallery.js';
 import apiKey from './config.js';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 
 class App extends Component {
