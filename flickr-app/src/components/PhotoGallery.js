@@ -2,10 +2,14 @@ import React from 'react';
 import Photo from './Photo.js';
 
 const PhotoGallery = (props) => {
-  if (props.photos.length > 0) {
+  if (props.loading == "true") {
     return (
-      <div className="photo-container container">
-        <h2>{props.title} images</h2>
+      <h2>{props.title}</h2>
+    )
+  } else if (props.photos.length > 0) {
+    return (
+      <React.Fragment>
+        <h2>{props.title}</h2>
         <ul>
           {props.photos.map( photo => (
             <Photo 
@@ -15,7 +19,7 @@ const PhotoGallery = (props) => {
             />)
           )}
         </ul>
-      </div>
+      </React.Fragment>
     ) 
   } else {
       return (

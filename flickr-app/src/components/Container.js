@@ -37,12 +37,12 @@ export default class Container extends React.Component {
   
   render() {
     return (
-      <div>
-      { 
-        (this.state.loading)
-        ? <p>Loading...</p>
-        : <PhotoGallery photos={this.state.photos} title={this.props.match.params.tag.substring(1)} />
-      }
+      <div className="photo-container container">
+        { 
+          (this.state.loading)
+          ? <PhotoGallery title="Loading..." loading="true"/>
+          : <PhotoGallery photos={this.state.photos} title={`${this.props.match.params.tag.substring(1)} images`} />
+        }
       </div>
     );
   }
