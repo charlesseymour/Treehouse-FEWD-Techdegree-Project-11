@@ -13,7 +13,7 @@ class App extends Component {
         <div>
           <SearchForm />
           <Navigation />
-          <Route exact path="/" render={() => <Redirect to="/cat" /> } />
+          <Route exact path="/" render={() => <Redirect to="/:cat" /> } />
           <Route path="/:tag" render={(props) => <Container {...props} /> } />
         </div>
       </BrowserRouter>
