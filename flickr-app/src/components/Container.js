@@ -12,17 +12,25 @@ export default class Container extends React.Component {
     }
   }
   
-  url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + apiKey + "&format=json&nojsoncallback=1&tags=" + this.props.match.params.tag;
-  
-  componentDidMount() {
-    axios.get(this.url)
+  fetchPhotos(tag) {
+    let url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + apiKey + "&format=json&nojsoncallback=1&tags=" + tag;
+    axios.get(url)
       .then(response => {
         this.setState({photos: response.data.photos.photo});
-        console.log("Photos = " + this.state.photos);
       })
       .catch(error => {
         console.log('Error fetching and parsing data', error);
       })
+  }
+  
+  componentDidMount() {
+    this.fetchPhotos(this.props.match.params.tag);
+  }
+  
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.tag !== prevProps.match.params.tag) {
+      this.fetchPhotos(this.props.match.params.tag);
+    }
   }
   
   render() {
