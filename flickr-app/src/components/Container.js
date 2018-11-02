@@ -35,7 +35,7 @@ export default class Container extends React.Component {
   
   render() {
     return (
-      <PhotoGallery photos={this.state.photos} />
+      <PhotoGallery photos={this.state.photos} title={this.props.match.params.tag.substring(1)}/>
     );
   }
 }
