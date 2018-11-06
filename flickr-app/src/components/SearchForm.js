@@ -10,7 +10,7 @@ var onSearchChange = e => {
 function handleSubmit(history) {
   return e => {
     e.preventDefault();
-    history.push("/" + searchTag);
+    history.push("/search/" + searchTag);
   };
 }
 
