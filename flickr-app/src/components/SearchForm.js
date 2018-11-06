@@ -8,11 +8,9 @@ var onSearchChange = e => {
 }
 
 function handleSubmit(history) {
-  console.log("history = " + history);
   return e => {
-    console.log("searchTag = " + searchTag);
     e.preventDefault();
-    history.push("/:" + searchTag);
+    history.push("/" + searchTag);
   };
 }
 

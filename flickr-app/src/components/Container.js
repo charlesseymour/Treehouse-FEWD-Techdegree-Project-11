@@ -32,6 +32,7 @@ export default class Container extends React.Component {
     if (this.props.match.params.tag !== prevProps.match.params.tag) {
       this.setState({loading: true});
       this.fetchPhotos(this.props.match.params.tag);
+      document.getElementsByClassName("search-form")[0].reset();
     }
   }
   
@@ -41,7 +42,7 @@ export default class Container extends React.Component {
         { 
           (this.state.loading)
           ? <PhotoGallery title="Loading..." loading="true"/>
-          : <PhotoGallery photos={this.state.photos} title={`${this.props.match.params.tag.substring(1)} images`} />
+          : <PhotoGallery photos={this.state.photos} title={`${this.props.match.params.tag} images`} />
         }
       </div>
     );
