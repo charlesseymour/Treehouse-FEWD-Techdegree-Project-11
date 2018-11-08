@@ -1,12 +1,16 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+// Declare a variable to store the search term from the form
 var searchTag = '';
 
+// Redefine the searchTag variable as the user types in the form
 var onSearchChange = e => {
   searchTag = e.target.value;
 }
 
+// Upon search form submission, redirect the browser
+// to the URL with the current search term as the tag parameter
 function handleSubmit(history) {
   return e => {
     e.preventDefault();
@@ -14,6 +18,7 @@ function handleSubmit(history) {
   };
 }
 
+// Render the search form
 const SearchForm = (props) => (
   <form className="search-form" onSubmit={handleSubmit(props.history)}>
     <input type="search" onChange={onSearchChange} name="search" placeholder="Search" required/>
